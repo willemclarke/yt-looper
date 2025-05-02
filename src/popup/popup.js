@@ -1,3 +1,8 @@
+const MESSAGE = {
+  SET_LOOP: "SET_LOOP",
+  RELEASE_LOOP: "RELEASE_LOOP",
+};
+
 const STORAGE_KEY_START = "yt-loop-start";
 const STORAGE_KEY_END = "yt-loop-end";
 
@@ -68,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         chrome.tabs.sendMessage(
           tabs[0].id,
           {
-            action: "SET_LOOP",
+            action: MESSAGE.SET_LOOP,
             start: startSeconds,
             end: endSeconds,
           },
@@ -96,10 +101,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Send message to content script to stop looping
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { action: "RELEASE_LOOP" }, () => {
-        document.getElementById("status").textContent = "Loop released.";
-        document.getElementById("status").style.color = "#333";
-      });
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { action: MESSAGE.RELEASE_LOOP },
+        () => {
+          document.getElementById("status").textContent = "Loop released.";
+          document.getElementById("status").style.color = "#333";
+        }
+      );
     });
   });
 });

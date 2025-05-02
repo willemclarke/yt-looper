@@ -1,3 +1,9 @@
+// Content script for YouTube Looper
+const MESSAGE = {
+  SET_LOOP: "SET_LOOP",
+  RELEASE_LOOP: "RELEASE_LOOP",
+};
+
 let loopInterval = null;
 let loopStart = null;
 let loopEnd = null;
@@ -32,14 +38,21 @@ function startLooper(start, end) {
 }
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.action === "SET_LOOP") {
-    const { start, end } = msg;
-    startLooper(start, end);
-    sendResponse({ status: "ok" });
-  } else if (msg.action === "RELEASE_LOOP") {
-    clearLooper();
-    loopStart = null;
-    loopEnd = null;
-    sendResponse({ status: "released" });
+  switch (msg.action) {
+    case MESSAGE.SET_LOOP: {
+      const { start, end } = msg;
+      startLooper(start, end);
+      sendResponse({ status: "ok" });
+      break;
+    }
+    case MESSAGE.RELEASE_LOOP: {
+      clearLooper();
+      loopStart = null;
+      loopEnd = null;
+      sendResponse({ status: "released" });
+      break;
+    }
+    default:
+      break;
   }
 });
