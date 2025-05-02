@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Looper</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="looper-container">
+      <h2>YouTube Looper</h2>
+      <form id="looper-form">
+        <label for="start-time">Start Time (mm:ss):</label>
+        <input
+          type="text"
+          id="start-time"
+          name="start-time"
+          pattern="(\d{1,2}:)?\d{1,2}:\d{1,2}"
+          placeholder="e.g. 1:05:00 or 5:00"
+          required
+        />
+        <label for="end-time">End Time (mm:ss):</label>
+        <input
+          type="text"
+          id="end-time"
+          name="end-time"
+          pattern="(\d{1,2}:)?\d{1,2}:\d{1,2}"
+          placeholder="e.g. 1:10:00 or 10:00"
+          required
+        />
+        <button type="submit">Loop!</button>
+      </form>
+      <button
+        type="button"
+        id="release-btn"
+        style="margin-top: 8px; background: #888"
+      >
+        Release
+      </button>
+      <div id="status"></div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

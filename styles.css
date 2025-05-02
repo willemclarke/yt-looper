@@ -1,0 +1,37 @@
+#looper-container {
+  width: 220px;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+h2 {
+  font-size: 1.2em;
+  margin-bottom: 12px;
+}
+label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 2px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+button {
+  width: 100%;
+  padding: 6px;
+  background: #cc0000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 1em;
+  cursor: pointer;
+}
+button:hover {
+  background: #e62117;
+}
+#status {
+  margin-top: 10px;
+  font-size: 0.95em;
+}
